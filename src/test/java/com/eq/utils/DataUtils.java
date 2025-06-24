@@ -1,5 +1,8 @@
 package com.eq.utils;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
+
 import org.testng.annotations.DataProvider;
 
 public class DataUtils {
@@ -17,6 +20,15 @@ public class DataUtils {
 		data[1][1]="kim123";
 		data[1][2]="Invalid credentials";
 		
+		return data;
+	}
+	
+	@DataProvider
+	public Object[][] commonDataProvider(Method method) throws IOException
+	{
+		//Testmethod name is the sheetname
+		String testMethodName=method.getName();
+		Object[][] data= ExcelUtils.getSheetIntoTwoDimensionalArray("test-data/orange-test-data.xlsx", testMethodName);
 		return data;
 	}
 }

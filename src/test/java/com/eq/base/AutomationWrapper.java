@@ -12,6 +12,7 @@ public class AutomationWrapper {
 
 	@BeforeMethod
 	public void setup() {
+		
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 
 		driver = new ChromeDriver();
