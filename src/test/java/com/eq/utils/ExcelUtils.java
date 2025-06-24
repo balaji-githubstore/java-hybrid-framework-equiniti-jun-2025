@@ -20,13 +20,7 @@ public class ExcelUtils {
 
 		for (int r = 1; r < rowCount; r++) {
 			for (int c = 0; c < cellCount; c++) {
-
-				String cellValue = format.formatCellValue(sheet.getRow(r).getCell(c));
-				if (cellValue == null || cellValue.strip() == "") {
-					r = rowCount;
-					break;
-				}
-				data[r - 1][c] = cellValue;
+				data[r - 1][c] = format.formatCellValue(sheet.getRow(r).getCell(c));
 			}
 		}
 
