@@ -3,7 +3,9 @@ package com.eq.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+import com.eq.base.WebDriverKeywords;
+
+public class LoginPage extends WebDriverKeywords {
 	private WebDriver driver;
 
 	private By usernameLocator = By.name("username");
@@ -13,23 +15,28 @@ public class LoginPage {
 	private By headerLocator = By.xpath("//h5");
 
 	public LoginPage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
 	public void enterUsername(String username) {
-		driver.findElement(usernameLocator).sendKeys(username);
+//		driver.findElement(usernameLocator).sendKeys(username);
+		super.setInputTextToElement(usernameLocator, username);
 	}
 
 	public void enterPassword(String password) {
-		driver.findElement(passwordLocator).sendKeys(password);
+//		driver.findElement(passwordLocator).sendKeys(password);
+		setInputTextToElement(passwordLocator, password);
 	}
 
 	public void clickOnLogin() {
-		driver.findElement(loginLocator).click();
+//		driver.findElement(loginLocator).click();
+		super.clickOnElement(loginLocator);
 	}
 
 	public String getInvalidErrorMessage() {
-		return driver.findElement(errorLocator).getText();
+//		return driver.findElement(errorLocator).getText();
+		return super.getElementText(errorLocator);
 	}
 
 	public String getLoginPageTitle() {
