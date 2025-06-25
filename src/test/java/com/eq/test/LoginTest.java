@@ -12,13 +12,10 @@ public class LoginTest extends AutomationWrapper {
 	@Test(dataProviderClass = DataUtils.class, dataProvider = "commonDataProvider")
 	public void validLoginTest(String username, String password, String expectedValue) {
 		
-
 		LoginPage login = new LoginPage(driver);
-
 		login.enterUsername(username);
 		login.enterPassword(password);
-
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		login.clickOnLogin();
 
 		// Assert the text Time at Work
 		String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'at Work')]")).getText();
@@ -27,14 +24,13 @@ public class LoginTest extends AutomationWrapper {
 
 	@Test(dataProviderClass = DataUtils.class, dataProvider = "commonDataProvider")
 	public void invalidLoginTest(String username, String password, String expectedError) {
+		
 		LoginPage login = new LoginPage(driver);
-
 		login.enterUsername(username);
 		login.enterPassword(password);
+		login.clickOnLogin();
 		
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-
-		String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
+		String actualError = login.getInvalidErrorMessage();
 		Assert.assertEquals(actualError, expectedError);
 	}
 }
