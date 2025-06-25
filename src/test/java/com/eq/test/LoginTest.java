@@ -11,6 +11,8 @@ import com.eq.utils.DataUtils;
 public class LoginTest extends AutomationWrapper {
 	@Test(dataProviderClass = DataUtils.class, dataProvider = "commonDataProvider")
 	public void validLoginTest(String username, String password, String expectedValue) {
+		
+
 		LoginPage login = new LoginPage(driver);
 
 		login.enterUsername(username);

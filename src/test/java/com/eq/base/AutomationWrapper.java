@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class AutomationWrapper {
 	protected WebDriver driver;
+	public int a=10;
 
 	@BeforeMethod
 	public void setup() {
