@@ -8,7 +8,7 @@ import com.eq.base.AutomationWrapper;
 
 public class LoginUITest extends AutomationWrapper {
 
-	@Test(groups = {"ui","smoke"})
+	@Test(groups = {"ui","smoke1"})
 	public void titleTest() {
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, "OrangeHRM");
